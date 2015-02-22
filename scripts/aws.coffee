@@ -11,7 +11,7 @@ module.exports = (robot) ->
   AWS.config.secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY
   AWS.config.region = process.env.AWS_REGION
 
-  robot.respond /調子(.*)どう(.*)$/i, (msg) ->
+  robot.respond /(.*)調子(.*)どう(.*)$/i, (msg) ->
     ec2 = new AWS.EC2({apiVersion: '2014-10-01'})
     bastion = 'peraichi-bastion'
 
@@ -25,7 +25,7 @@ module.exports = (robot) ->
           msg.send "#{bastion} is #{ins.State.Name}"
 
 
-  robot.respond /起きろ(.*)$/i, (msg) ->
+  robot.respond /(.*)起きろ(.*)$/i, (msg) ->
     ec2 = new AWS.EC2({apiVersion: '2014-10-01'})
     bastion = 'peraichi-bastion'
 
@@ -47,7 +47,7 @@ module.exports = (robot) ->
         msg.send "#{bastion}: おはようございます！"
 
 
-  robot.respond /寝ろ(.*)$/i, (msg) ->
+  robot.respond /(.*)寝ろ(.*)$/i, (msg) ->
     ec2 = new AWS.EC2({apiVersion: '2014-10-01'})
     bastion = 'peraichi-bastion'
 
